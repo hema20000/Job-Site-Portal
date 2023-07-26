@@ -1,0 +1,159 @@
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 350px;">
+      <h4 class="card-title mt-3 text-center">Employer Registration</h4>
+      <form (ngSubmit)="addUser()" #form1="ngForm">
+
+        <!-- user name -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input type="text" [(ngModel)]="username" name="username" #name2="ngModel" minlength="3" required
+            placeholder="Enter Name" pattern="[a-zA-Z][a-zA-Z .]+$" class="form-control">
+        </div>
+        <div class="col-12">
+          <span *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="red-text">
+            <span *ngIf="name2.errors?.required"> Name should not be empty.</span>
+            <span *ngIf="name2.errors?.minlength">Name must be at least 3 characters long.</span>
+            <span *ngIf="name2.errors?.pattern"> Name should contain only characters!</span>
+          </span>
+        </div>
+        <!-- --------------------------------------- -->
+
+        <!-- Company name -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-industry"></i> </span>
+          </div>
+          <input type="text" [(ngModel)]="companyname" name="companyname" #companyname2="ngModel" minlength="3" required
+            placeholder="Enter Company Name" pattern="[a-zA-Z][a-zA-Z -  .]+$" class="form-control">
+        </div>
+        <div class="col-12">
+          <span *ngIf="companyname2.invalid && (companyname2.dirty || companyname2.touched)" class="red-text">
+            <span *ngIf="companyname2.errors?.required">Company Name should not be empty.</span>
+            <span *ngIf="companyname2.errors?.minlength">Company Name must be at least 3 characters long.</span>
+            <span *ngIf="companyname2.errors?.pattern">Company Name should contain only characters!</span>
+          </span>
+        </div>
+        <!-- --------------------------------------- -->
+
+        <!-- address -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-address-card"></i> </span>
+          </div>
+          <textarea [(ngModel)]="address" name="address" #place2="ngModel" required minlength="3"
+            placeholder="Enter Address" class="form-control"></textarea>
+        </div>
+        <div class="col-12">
+          <span *ngIf="place2.invalid && (place2.dirty || place2.touched)" class="red-text">
+            <span *ngIf="place2.errors?.required"> Address should not be empty.</span>
+            <span *ngIf="place2.errors?.minlength"> Address must be at least 3 characters long.</span>
+          </span>
+        </div>
+        <!-- --------------------------------------- -->
+
+        <!-- phone number1 -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+          </div>
+
+          <input type="text" [(ngModel)]="phone_number1" name="phone_number1" #phn_no12="ngModel" required
+            placeholder="Enter Primary Phone Number"
+            pattern="^(\+\d{1,9}\s?)?1?\-?\s?\(?\d{1,9}\)?[\s.-]?\d{1,9}[\s.-]?\d{1,9}$" class="form-control">
+        </div>
+        <div class="col-12">
+          <span *ngIf="phn_no12.invalid && (phn_no12.dirty || phn_no12.touched)" class="red-text">
+            <span *ngIf="phn_no12.errors?.required"> Enter your phone number or landline number.</span>
+            <span *ngIf="phn_no12.errors?.pattern">Enter 10 digit mobile number or your landline number</span>
+          </span>
+        </div>
+        <!-- --------------------------------------- -->
+
+        <!-- phone number2 -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+          </div>
+          <input type="text" [(ngModel)]="phone_number2" name="phone_number2" #phn_no22="ngModel"
+            placeholder="Enter Secondary Phone Number"
+            pattern="^(\+\d{1,9}\s?)?1?\-?\s?\(?\d{1,9}\)?[\s.-]?\d{1,9}[\s.-]?\d{1,9}$" class="form-control">
+        </div>
+        <div class="col-12">
+          <span *ngIf="phn_no22.invalid && (phn_no22.dirty || phn_no22.touched)" class="red-text">
+            <span *ngIf="phn_no22.errors?.pattern"> Enter 10 digit mobile number or your landline number</span>
+          </span>
+        </div>
+        <!-- --------------------------------------- -->
+
+        <!-- email -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          </div>
+          <input type="email" [(ngModel)]="emailid" name="emailid" #email_id2="ngModel" required
+            placeholder="Enter Email Id" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+            class="form-control">
+        </div>
+        <div class="col-6">
+          <span *ngIf="email_id2.invalid && (email_id2.dirty || email_id2.touched)" class="red-text">
+            <span *ngIf="email_id2.errors?.required"> Email Id should not be empty.</span>
+            <span *ngIf="email_id2.errors?.pattern"> This is not a valid Email Id!</span>
+          </span>
+        </div>
+        <!--------------------------------------------->
+
+        <!-- password1 -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input class="form-control" [(ngModel)]="password" name="password" #pass_word2="ngModel" required
+            minlength="4" placeholder="Enter Password" type="password" [type]="hide ? 'password':'text' ">
+          <span class="input-group-text">
+            <i class="fas fa-eye" matSuffix (click)="hide = !hide"></i>
+            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+          </span>
+        </div>
+        <div class="col-12">
+          <span *ngIf="pass_word2.invalid && (pass_word2.dirty || pass_word2.touched)" class="red-text">
+            <span *ngIf="pass_word2.errors?.required"> Password should not be empty.</span>
+            <span *ngIf="pass_word2.errors?.minlength">Password must be at least 4 characters long</span>
+          </span>
+        </div>
+        <!------------------------------------------------------>
+
+        <!-- password2 -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input type="password" [(ngModel)]="password2" name="password2" #pass_word12="ngModel" required
+            pattern="{{pass_word2.value}}" placeholder="Confirm Password" class="form-control"
+            [type]="hide ? 'password':'text' ">
+          <span class="input-group-text">
+            <i class="fas fa-eye" matSuffix (click)="hide = !hide"></i>
+            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+          </span>
+        </div>
+        <div class="col-12">
+          <span *ngIf="pass_word12.invalid && (pass_word12.dirty || pass_word12.touched)" class="red-text">
+            <span *ngIf="pass_word12.errors?.required"> Password should not be empty.</span>
+            <span *ngIf="pass_word12.errors?.pattern">Password and confirm password should match.</span>
+          </span>
+        </div>
+        <!------------------------------------------------------->
+
+        <div class="form-group">
+          <button [disabled]="!form1.form.valid" class="btn btn-primary btn-block"> Create Account </button><br>
+          <button type="reset" class="btn btn-warning float-right">Reset </button>
+        </div>
+
+        <p class="text-center">Have an account? <a routerLink="/employer-login">Log In</a> </p>
+      </form>
+    </article>
+  </div> 
+
+</div>

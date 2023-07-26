@@ -1,0 +1,42 @@
+<h1 class="text-center" style="color: #007BFF;">Contact Request</h1>
+<div *ngIf="total_no_of_records > 0">
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover" border="2px solid black">
+      <thead align="center">
+        <tr>
+          <th>id</th>
+          <th>User Name</th>
+          <th>Emailid</th>
+          <th>Address</th>
+          <th>Phone No.</th>
+          <th>Subject</th>
+          <th>Preferred Date Time</th>
+          <th>Message</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of Contact">
+          <td>{{contact._id}}</td>
+          <td>{{contact.username}}</td>
+          <td>{{contact.emailid}}</td>
+          <td>{{contact.address}}</td>
+          <td>{{contact.phoneno}}</td>
+          <td>{{contact.subject}}</td>
+          <td>{{contact.preferreddatetime}}</td>
+          <td>{{contact.message}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="total_no_of_records == 0">
+  <h3 ngClass="red-text">No Data Found! Table may be empty!!</h3>
+  <button (click)="setNegative()">Close the Message</button>
+</div>
+
+<div *ngIf="message === 'Backend may be down!'">
+  <h3 ngClass="red-text">{{message}}</h3>
+  <button (click)="clearMessage()">Close the Message</button>
+</div>
+<button style="background-color: coral; width: auto;" class="btn btn-primary" routerLink="/admin-DashBoard">Back to
+  dashoard</button>

@@ -1,0 +1,2 @@
+.outer-div {border: 5px solid green;min-height:200px;background-color: rgb(172, 113, 190);}
+.inner-div {color:red; text-align:center; font-size:80px; margin:40px;}

@@ -1,0 +1,50 @@
+<div id="logreg-forms">
+  <form class="form-signin" (ngSubmit)="emplogin()" #form1="ngForm">
+    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"><b>Employer Sign in</b> </h1>
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+        </div>
+        <input name="emailid" [(ngModel)]="emailid" type="text" value="" class="input form-control" id="emailid"
+          aria-label="emailid" aria-describedby="basic-addon1" #email_id2="ngModel" required
+          class="form-control form-control-md" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+          placeholder="Enter Email id" />
+      </div>
+    </div>
+    <div class="col-8">
+      <span *ngIf="email_id2.invalid && (email_id2.dirty || email_id2.touched)" class="red-text">
+        <span *ngIf="email_id2.errors?.required"> Email Id should not be empty.</span>
+        <span *ngIf="email_id2.errors?.pattern"> This is not a valid Email Id!</span>
+      </span>
+    </div>
+
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+        </div>
+        <input type="password" [(ngModel)]="password" name="password" value="" class="input form-control"
+          [type]="hide ? 'password':'text' " id="password" placeholder="password" required="true" aria-label="password"
+          aria-describedby="basic-addon1" #pass_word2="ngModel" required class="form-control form-control-md"
+          placeholder="Enter password" />
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i class="fas fa-eye" matSuffix (click)="hide = !hide"></i>
+            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+          </span>
+        </div>
+      </div>
+      <div class="col-12">
+        <span *ngIf="pass_word2.invalid && (pass_word2.dirty || pass_word2.touched)" class="red-text">
+          <span *ngIf="pass_word2.errors?.required"> Password should not be empty.</span>
+        </span>
+      </div>
+    </div>
+
+    <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+    <hr>
+    <button class="btn btn-primary btn-block" type="button" routerLink="/employer-register" id="btn-signup"><i
+        class="fas fa-registered"></i>Dont have an account register</button>
+  </form>
+</div>

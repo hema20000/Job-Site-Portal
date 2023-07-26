@@ -1,0 +1,23 @@
+<br>
+<h1 style="text-align:center;">Give Permission</h1>
+<form (ngSubmit)="editJob()" #form1="ngForm">
+  <div class="row">
+    <div class="col-2"><label>Approved : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      true: <input type="radio" [(ngModel)]="approved" id="true" value="true" name="approved">
+      false: <input type="radio" [(ngModel)]="approved" id="false" value="false" name="approved">
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><span class="red-text">* - Mandatory</span></div>
+    <div class="col-4" style="text-align:center;">
+      <button class="btn btn-success">Update</button> &nbsp;
+      <button type="reset" class="btn btn-warning float-right">Reset </button>
+    </div>
+    <div class="col-6"></div>
+  </div>
+</form>
+
+<button style="background-color: coral; width: auto;" class="btn btn-primary" routerLink="/admin-DashBoard">Back to
+  dashoard</button>

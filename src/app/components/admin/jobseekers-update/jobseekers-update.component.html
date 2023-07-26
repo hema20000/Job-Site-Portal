@@ -1,0 +1,130 @@
+<br>
+<h1 style="text-align:center;">Update Job Seeker</h1><br>
+<form (ngSubmit)="editJobseeker()" #form1="ngForm">
+  <div class="row">
+    <div class="col-2"><label>Comments : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <textarea [(ngModel)]="comments" name="comments" #comments2="ngModel" minlength="3" placeholder="Enter comments"
+        pattern="[a-zA-Z 0-9][a-zA-Z ,.]+$" class="form-control"></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"><label>Block list : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      true: <input type="radio" [(ngModel)]="blacklist" id="true" value="true" name="blacklist">
+      false: <input type="radio" [(ngModel)]="blacklist" id="false" value="false" name="blacklist">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"><label>Id : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="_id" name="_id" #id2="ngModel" required placeholder="Enter Id" readonly
+        class="form-control" autofocus>
+    </div>
+    <div class="col-6">
+      <span *ngIf="id2.invalid && (id2.dirty || id2.touched)" class="red-text">
+        <span *ngIf="id2.errors?.required"> Id should not be empty.</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"><label>User Name : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="username" name="username" #name2="ngModel" minlength="3" required
+        placeholder="Enter Name" pattern="[a-zA-Z][a-zA-Z .]+$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="red-text">
+        <span *ngIf="name2.errors?.required"> Name should not be empty.</span>
+        <span *ngIf="name2.errors?.minlength">Name must be at least 3 characters long.</span>
+        <span *ngIf="name2.errors?.pattern"> Name should contain only characters!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Address : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <textarea [(ngModel)]="address" name="address" #place2="ngModel" required minlength="3"
+        placeholder="Enter Address" class="form-control"></textarea>
+    </div>
+    <div class="col-6">
+      <span *ngIf="place2.invalid && (place2.dirty || place2.touched)" class="red-text">
+        <span *ngIf="place2.errors?.required"> Address should not be empty.</span>
+        <span *ngIf="place2.errors?.minlength"> Address must be at least 3 characters long.</span>
+
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Primary Phone Number : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="phoneno1" name="phone_number1" #phn_no12="ngModel" required
+        placeholder="Enter Phone Number" pattern="^(\+\d{1,9}\s?)?1?\-?\.?\s?\(?\d{1,9}\)?[\s.-]?\d{1,9}[\s.-]?\d{1,9}$"
+        class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="phn_no12.invalid && (phn_no12.dirty || phn_no12.touched)" class="red-text">
+        <span *ngIf="phn_no12.errors?.required"> Enter your phone number or enter your landline number.</span>
+        <span *ngIf="phn_no12.errors?.pattern">Enter 10 digit mobile number or your landline number</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Secondary Phone Number: </label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="phoneno2" name="phoneno2" #phn_no22="ngModel" placeholder="Secondary Phone Number"
+        pattern="^(\+\d{1,9}\s?)?1?\-?\.?\s?\(?\d{1,9}\)?[\s.-]?\d{1,9}[\s.-]?\d{1,9}$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="phn_no22.invalid && (phn_no22.dirty || phn_no22.touched)" class="red-text">
+        <span *ngIf="phn_no22.errors?.required"> Please enter phone number.</span>
+        <span *ngIf="phn_no22.errors?.pattern"> Enter 10 digit mobile number or your landline number</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Email Id : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="email" [(ngModel)]="emailid" name="emailid" #email_id2="ngModel" required readonly
+        placeholder="Enter Email Id" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="email_id2.invalid && (email_id2.dirty || email_id2.touched)" class="red-text">
+        <span *ngIf="email_id2.errors?.required"> Email Id should not be empty.</span>
+        <span *ngIf="email_id2.errors?.pattern"> This is not a valid Email Id!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Password : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="password" [(ngModel)]="password" name="password" #pass_word2="ngModel" readonly required
+        minlength="6" placeholder="Enter Password" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="pass_word2.invalid && (pass_word2.dirty || pass_word2.touched)" class="red-text">
+        <span *ngIf="pass_word2.errors?.required"> pass_word should not be empty.</span>
+        <span *ngIf="pass_word2.errors?.minlength">pass_word must be at least 6 characters long</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><span class="red-text">* - Mandatory</span></div>
+    <div class="col-4" style="text-align:center;">
+      <button class="btn btn-success">Update JobSeeker</button> &nbsp;
+    </div>
+    <div class="col-6"></div>
+  </div>
+</form>
+
+<button style="background-color: coral; width: auto;" class="btn btn-primary" routerLink="//admin-DashBoard">Back to
+  dashoard</button>

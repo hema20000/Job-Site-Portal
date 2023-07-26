@@ -1,0 +1,74 @@
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: teal; color: white;" >
+
+  <a class="navbar-brand" class="logo"  routerLink="/"  ><img src="assets/images/sweet-job.PNG" alt="Logo"></a>
+    <button style="color: white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ul1">
+          <li class="nav-item active">
+              <a style="color: white;" class="nav-link" routerLink="/" >Home</a>
+          </li>
+
+          <li class="nav-item active" *ngIf="commonService.loginStatus === 0">
+            <a style="color: white;" class="nav-link" routerLink="jobseeker-login" >Job Seeker</a>
+        </li>
+
+          <li class="nav-item" *ngIf="commonService.loginStatus === 0">
+            <a  style="color: white;" class="nav-link" routerLink="employer-login">Employer</a>
+          </li>
+
+
+        
+
+          <li class="nav-item"  *ngIf="commonService.loginStatus === 0">
+            <a  style="color: white;" class="nav-link" routerLink="search" class="nav-link">Browse Jobs</a>
+          </li>
+  
+          <li class="nav-item"  *ngIf="commonService.loginStatus === 0">
+            <a  style="color: white;" class="nav-link" routerLink="about-us">About Us</a>
+          </li>
+
+
+          <li class="nav-item"  *ngIf="commonService.loginStatus === 0">
+            <a  style="color: white;" class="nav-link" routerLink="contact">Contact Us</a>
+          </li>
+
+          <li>
+            <a style="color: white;" class="nav-link" *ngIf="commonService.loginStatus === 3" routerLink="employer-dashboard">Employer Dashboard</a>
+          </li>
+          <li>
+            <a style="color: white;" class="nav-link" *ngIf="commonService.loginStatus === 2" routerLink="jobseekerdas">Jobseeker Dashboard</a>
+          </li>
+
+          <li>
+          <a  style="color: white;" class="nav-link" *ngIf="commonService.loginStatus === 1"  routerLink="admin-DashBoard">Admin</a>
+          </li>
+
+
+          
+          
+         
+          <li class="nav-item" *ngIf="commonService.loginStatus === 1" (click)="logout()">
+            <a   style="color: white;" class="nav-link"><i class="fa fa-sign-out" style="font-size:20px;color: #4b5366;"></i> Logout</a>
+          </li>
+           
+          <li class="nav-item" *ngIf="commonService.loginStatus === 2" (click)="logout()">
+            <a   style="color: white;" class="nav-link"><i class="fa fa-sign-out" style="font-size:20px;color: #4b5366;"></i> Logout</a>
+          </li>
+
+          <li class="nav-item" *ngIf="commonService.loginStatus === 3" (click)="logout()">
+            <a   style="color: white;" class="nav-link"><i class="fa fa-sign-out" style="font-size:20px;color: #4b5366;"></i> Logout</a>
+          </li>
+
+
+      </ul>
+     
+  </div>
+</nav>
+
+
+

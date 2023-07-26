@@ -1,0 +1,39 @@
+
+
+/* 
+
+    li:hover{
+        background-color: orange;
+    }
+    .navbar-expand-md{
+        background-color:#008275;
+    } */
+
+    img{
+        height: 50px;
+        width: 100px;
+        border-radius: 25px;
+    }
+
+    .ul1
+    {
+        margin-right: 50px;
+    }
+
+    li{
+        margin-right: 50px;
+        color: white;
+    }
+    li a{
+        color: white;
+    }
+
+    a:hover{
+      
+        background-color: tomato;
+    }
+
+  
+   
+    
+

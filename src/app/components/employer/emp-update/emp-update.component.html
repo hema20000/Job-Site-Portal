@@ -1,0 +1,128 @@
+<br>
+<h1 style="text-align:center;"><b>Update details of {{username}}</b></h1><br>
+<form #form1="ngForm" (ngSubmit)="editEmployer()">
+  <div class="row">
+    <div class="col-2"><label>User Name : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="username" name="username" #name2="ngModel" minlength="3" required
+        placeholder="Enter Name" pattern="[a-zA-Z][a-zA-Z .]+$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="red-text">
+        <span *ngIf="name2.errors?.required"> Name should not be empty.</span>
+        <span *ngIf="name2.errors?.minlength">Name must be at least 3 characters long.</span>
+        <span *ngIf="name2.errors?.pattern"> Name should contain only characters!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Company Name : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="companyname" readonly name="companyname" #name2="ngModel" minlength="3" required
+        placeholder="Enter Company Name" pattern="[a-zA-Z][a-zA-Z .]+$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="red-text">
+        <span *ngIf="name2.errors?.required">Company Name should not be empty.</span>
+        <span *ngIf="name2.errors?.minlength">Company Name must be at least 3 characters long.</span>
+        <span *ngIf="name2.errors?.pattern">Company Name should contain only characters!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Address : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <textarea [(ngModel)]="address" name="address" #place2="ngModel" required minlength="3"
+        placeholder="Enter Address" class="form-control"></textarea>
+    </div>
+    <div class="col-6">
+      <span *ngIf="place2.invalid && (place2.dirty || place2.touched)" class="red-text">
+        <span *ngIf="place2.errors?.required"> Address should not be empty.</span>
+        <span *ngIf="place2.errors?.minlength"> Address must be at least 3 characters long.</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Primary Number : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="phoneno1" name="phoneno1" #phn_no12="ngModel" required
+        placeholder="Enter Phone Number 1"
+        pattern="^(\+\d{1,9}\s?)?1?\-?\.?\s?\(?\d{1,9}\)?[\s.-]?\d{1,9}[\s.-]?\d{1,9}$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="phn_no12.invalid && (phn_no12.dirty || phn_no12.touched)" class="red-text">
+        <span *ngIf="phn_no12.errors?.required"> Enter your phone number.</span>
+        <span *ngIf="phn_no12.errors?.pattern"> Enter 10 digit mobile number or your landline number.</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Secondary Number: <span class="red-text"></span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="phoneno2" name="phoneno2" #phn_no22="ngModel" placeholder="Enter Alternate Number"
+        pattern="^(\+\d{1,9}\s?)?1?\-?\.?\s?\(?\d{1,9}\)?[\s.-]?\d{1,9}[\s.-]?\d{1,9}$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="phn_no22.invalid && (phn_no22.dirty || phn_no22.touched)" class="red-text">
+        <span *ngIf="phn_no22.errors?.pattern"> Enter 10 digit mobile number or your landline number.</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Email Id : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="email" [(ngModel)]="emailid" name="emailid" #email_id2="ngModel" disabled
+        placeholder="Enter Email Id" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="email_id2.invalid && (email_id2.dirty || email_id2.touched)" class="red-text">
+        <span *ngIf="email_id2.errors?.required"> Email Id should not be empty.</span>
+        <span *ngIf="email_id2.errors?.pattern"> This is not a valid Email Id!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Change Password : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="password" [(ngModel)]="password" name="password" #pass_word2="ngModel" required minlength="4"
+        placeholder="Enter Password" class="form-control" [type]="hide ? 'password':'text'">
+    </div>
+    <div class="col-3">
+      <i class="fas fa-eye" matSuffix (click)="hide = !hide"></i>
+    </div>
+    <div class="col-6">
+      <span *ngIf="pass_word2.invalid && (pass_word2.dirty || pass_word2.touched)" class="red-text">
+        <span *ngIf="pass_word2.errors?.required"> Password should not be empty.</span>
+        <span *ngIf="pass_word2.errors?.minlength">Password must be at least 4 characters long</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Confirm Password : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="password" [(ngModel)]="confirmpassword" name="confirmpassword" #confirm_password="ngModel" required
+        pattern="{{pass_word2.value}}" placeholder="Confirm Password" class="form-control" [type]="hide ? 'password':'text'">
+    </div>
+    <div class="col-3">
+      <i class="fas fa-eye" matSuffix (click)="hide = !hide"></i>
+    </div>
+    <div class="col-6">
+      <span *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)" class="red-text">
+        <span *ngIf="confirm_password.errors?.pattern"> Password and Confirm password should match.</span>
+        <span *ngIf="confirm_password.errors?.required"> Confirm Password should not empty</span>
+      </span>
+    </div>
+  </div>
+
+  <span class="red-text">*</span> - Madatory<br>
+  <button id="btn1" class="btn btn-success">Update</button>&nbsp;&nbsp;&nbsp;
+</form><br>
+<button style="background-color: coral; width: auto;" class="btn btn-primary" routerLink="/employer-dashboard">Back to
+  dashoard</button>

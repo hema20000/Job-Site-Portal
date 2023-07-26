@@ -1,0 +1,162 @@
+<br>
+<h1 style="text-align:center;"><b>Add new Job Posting</b></h1><br>
+<form (ngSubmit)="addJob()" #form1="ngForm">
+  <div class="row">
+    <div class="col-2"><label> Job Name : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="jobname" name="jobname" #jobname2="ngModel" minlength="3" required
+        placeholder="Enter Job Name" pattern="[a-zA-Z][a-zA-Z +#.]+$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="jobname2.invalid && (jobname2.dirty || jobname2.touched)" class="red-text">
+        <span *ngIf="jobname2.errors?.required">Job Name should not be empty.</span>
+        <span *ngIf="jobname2.errors?.minlength">Job Name must be at least 3 characters long.</span>
+        <span *ngIf="jobname2.errors?.pattern">Job Name should contain only characters!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Company Name: <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="companyname" name="companyname" #companyname2="ngModel" readonly required
+        minlength="3" placeholder="Enter Company Name" pattern="[0-9a-zA-Z][0-9a-zA-Z ,.]+$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="companyname2.invalid && (companyname2.dirty || companyname2.touched)" class="red-text">
+        <span *ngIf="companyname2.errors?.required"> Company Name should not be empty.</span>
+        <span *ngIf="companyname2.errors?.minlength"> Company Name must be at least 3 characters long.</span>
+        <span *ngIf="companyname2.errors?.pattern"> This is not a valid Company Name!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Job Description : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <textarea [(ngModel)]="jobdescription" name="jobdescription" #jobdescription2="ngModel" required minlength="5"
+        placeholder="Enter Job Description" pattern="[0-9a-zA-Z][0-9a-zA-Z +#,.]+$" class="form-control"></textarea>
+    </div>
+    <div class="col-6">
+      <span *ngIf="jobdescription2.invalid && (jobdescription2.dirty || jobdescription2.touched)" class="red-text">
+        <span *ngIf="jobdescription2.errors?.required"> Enter Job Description.</span>
+        <span *ngIf="jobdescription2.errors?.minlength"> Job Description must be at least 5 characters long.</span>
+        <span *ngIf="jobdescription2.errors?.pattern">Enter complete job description</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Minimum Experience: </label></div>
+    <div class="form-group col-4">
+      <input type="number" [(ngModel)]="minimumexperience" pattern="[0-9.][0-9]+$" name="minimumexperience"
+        placeholder="Enter minimum experience" class="form-control">
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Maximum Experience :</label></div>
+    <div class="form-group col-4">
+      <input type="number" [(ngModel)]="maximumexperience" name="maximumexperience" pattern="[0-9.][0-9]+$"
+        placeholder="Enter Maximum Experience" class="form-control">
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Minimum Salary :</label></div>
+    <div class="form-group col-4">
+      <input type="number" [(ngModel)]="minimumsalary" name="minimumsalary" placeholder="Enter minimum salary"
+        class="form-control">
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Maximum Salary :</label></div>
+    <div class="form-group col-4">
+      <input type="number" [(ngModel)]="maximumsalary" name="maximumsalary" placeholder="Enter maximum salary"
+        class="form-control">
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Job Location: <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="joblocation" name="joblocation" #joblocation2="ngModel" required minlength="3"
+        pattern="[a-zA-Z]+$" placeholder="Enter Job Location" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="joblocation2.invalid && (joblocation2.dirty || joblocation2.touched)" class="red-text">
+        <span *ngIf="joblocation2.errors?.required"> Job location should not be empty.</span>
+        <span *ngIf="joblocation2.errors?.minlength">Job location should be atleast 3 characters long.</span>
+        <span *ngIf="joblocation2.errors?.pattern">Job location should be only characters.</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Notice Period: <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="noticeperiod" name="noticeperiod" #noticeperiod2="ngModel"
+        pattern="[a-zA-Z0-9. ]+$" required placeholder="Enter notice period" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="noticeperiod2.invalid && (noticeperiod2.dirty || noticeperiod2.touched)" class="red-text">
+        <span *ngIf="noticeperiod2.errors?.required"> Notice period should not be empty.</span>
+        <span *ngIf="joblocation2.errors?.pattern">JNotice period accepts only numbers and characters.</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Main Skill : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="mainskill" name="mainskill" #mainskill2="ngModel" required
+        placeholder="Enter main skills" minlength="0" pattern="[a-zA-Z , - + #  .]+$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="mainskill2.invalid && (mainskill2.dirty || mainskill2.touched)" class="red-text">
+        <span *ngIf="mainskill2.errors?.required">Please fill main sills.</span>
+        <span *ngIf="mainskill2.errors?.pattern">Enter the skills required!!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Sub Skill : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="text" [(ngModel)]="subskills" name="subskillsl" #subskills2="ngModel" required
+        placeholder="Enter sub skills" minlength="0" pattern="[a-zA-Z , - + #  .]+$" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="subskills2.invalid && (subskills2.dirty || mainskill2.touched)" class="red-text">
+        <span *ngIf="subskills2.errors?.required">Please fill sub sills.</span>
+        <span *ngIf="subskills2.errors?.pattern">Enter the sub skills required!!</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><label>Num of post : <span class="red-text">*</span></label></div>
+    <div class="form-group col-4">
+      <input type="number" [(ngModel)]="numberofpost" name="numberofpost" #numberofpost2="ngModel" required
+        placeholder="Enter number of posts" class="form-control">
+    </div>
+    <div class="col-6">
+      <span *ngIf="numberofpost2.invalid && (numberofpost2.dirty || numberofpost2.touched)" class="red-text">
+        <span *ngIf="numberofpost2.errors?.required"> Number of post should not be empty.</span>
+      </span>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-2"><span class="red-text">* - Mandatory</span></div>
+    <div class="col-4" style="text-align:center;">
+      <button class="btn btn-success">Add Job</button> &nbsp;
+      <button type="reset" class="btn btn-warning float-right">Reset </button>
+
+    </div>
+    <div class="col-6"></div>
+  </div>
+  <button style="background-color: coral; width: auto;" class="btn btn-primary" routerLink="/employer-dashboard">Back to
+    dashoard</button>
+</form>

@@ -1,0 +1,26 @@
+{
+  "employer": [
+    {
+      
+      "employer_name": "ironman",
+      "company_name": "prodapt",
+      "address": "wgl",
+      "phone_number": "9900990099",
+      "phone_number_2": "9999009988",
+      "email_id":"mounika@gmail.com",
+      "password": "Mouni@123",
+      "confirm_password": "Mouni@123"
+      
+    },
+    {
+      "employer_name": "ironman",
+      "company_name": "prodapt",
+      "address": "wgl",
+      "phone_number": "9900990099",
+      "phone_number_2": "9999009988",
+      "email_id":"mouni@gmail.com",
+      "password": "Mouni@123",
+      "confirm_password": "Mouni@123"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "job": [
+    {
+      "company_name": "cts",
+      "location": "kanataka",
+      "role": "angular Delvoper",
+      "skills_required":"java, angular",
+      "salary":"3lpa",
+      "id": 3
+    },
+    {
+      "company_name": "Prodapt",
+      "location": "Banglore",
+      "role": "angular Delvoper",
+      "skills_required":"java, angular",
+      "salary":"5lpa",
+      "id": 4
+    },
+    {
+      "company_name": "cts",
+      "location": "hyderabad",
+      "role": "angular Delvoper",
+      "skills_required":"angular",
+      "salary":"4lpa",
+    
+      "id": 5
+    }
+  ]
+}

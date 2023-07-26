@@ -1,0 +1,50 @@
+<h1 class="text-center" style="color: blue;"><b>My Job Postings</b></h1>
+<div *ngIf="total_no_of_records > 0">
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead align="center">
+        <tr>
+          <th>Job Name</th>
+          <th>Company Name</th>
+          <th>Job Description</th>
+          <th>Job Location</th>
+          <th>Notice Period</th>
+          <th>Main Skill</th>
+          <th>Sub Skill</th>
+          <th>Num of post</th>
+          <th>Date Time</th>
+          <th>Application List</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of jobs">
+          <td>{{job.jobname}}</td>
+          <td>{{job.companyname}}</td>
+          <td>{{job.jobdescription}}</td>
+          <td>{{job.joblocation}}</td>
+          <td>{{job.noticeperiod}}</td>
+          <td>{{job.mainskill}}</td>
+          <td>{{job.subskills}}</td>
+          <td>{{job.numberofpost}}</td>
+          <td>{{job.datetime}}</td>
+          <td><button class="btn btn-primary" [routerLink]="['/employerpostedjob-jobseekerapplication',job._id]"
+              align="center">Application List</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="total_no_of_records == 0">
+  <h3 ngClass="red-text">No Data Found! Table may be empty!!</h3>
+  <button (click)="setNegative()">Close the Message</button>
+</div>
+<div *ngIf="message === 'Backend may be down!'">
+  <h3 ngClass="red-text">{{message}}</h3>
+  <button (click)="clearMessage()">Close the Message</button>
+</div>
+
+  <button style="background-color: coral; width: auto;" class="btn btn-primary" routerLink="/employer-dashboard">Back
+      to dashoard</button>
+
+    

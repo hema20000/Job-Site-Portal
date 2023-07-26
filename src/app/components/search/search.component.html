@@ -1,0 +1,45 @@
+<br>
+<h1 class="text-center"><b>Job List</b></h1>
+<div class="s01">
+  <form>
+    <div class="inner-form">
+      <div class="input-field first-wrap">
+        <input id="search" type="text" placeholder="Job Location" name="joblocation" [(ngModel)]="joblocation" />
+      </div>
+      <div class="input-field second-wrap">
+        <input id="location" type="text" placeholder="Company Name" name="companyname" [(ngModel)]="companyname" />
+      </div>
+      <div class="input-field third-wrap">
+        <input id="location" type="text" placeholder="Job Name" name="jobname" [(ngModel)]="jobname" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngFor="let JOB of Jobs | filter: joblocation | cfilter:companyname | jfilter:jobname">
+  <div class="div1"><br>
+    <h3>&nbsp;<i class="fas fa-building"></i> <b style="color: green;">&nbsp;{{JOB.companyname}}</b></h3>
+    &nbsp;<h4><b style="color: red;">&nbsp;{{JOB.jobname}}</b></h4>
+    <p>&nbsp;<i class="fas fa-briefcase"></i>&nbsp;<b>Experience:</b>&nbsp;&nbsp;
+      {{JOB.minimumexperience}}-{{JOB.maximumexperience}} &nbsp;&nbsp; <i class="fas fa-rupee-sign"></i><b>
+        Salary:</b>&nbsp;&nbsp;{{JOB.minimumsalary}}-{{JOB.maximumsalary}} &nbsp;&nbsp; <i
+        class='fas fa-map-marker-alt'></i> <b> Location:</b>&nbsp;&nbsp;{{JOB.joblocation}}</p>
+    <p>&nbsp;<i class="fas fa-comment"></i><b> Description:</b>&nbsp;&nbsp;{{JOB.jobdescription}}</p>
+    <p>&nbsp;<i class="fa fa-certificate"></i> <b> Skills:</b>&nbsp; {{JOB.mainskill}}, {{JOB.subskills}}</p>
+    <p>&nbsp;<i class="fa fa-bell" aria-hidden="true"></i><b> Notice Period:</b>&nbsp; {{JOB.noticeperiod}}</p>
+    <p>&nbsp;<i class="fa fa-plus-square" aria-hidden="true"></i><b> Number Of Post: </b>&nbsp;{{JOB.numberofpost}}</p>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button routerLink="/jobseeker-login">Apply</button><br><br>
+
+  </div>
+
+</div>
+<div *ngIf="total_no_of_records == 0">
+  <h3 ngClass="red-text">No Data Found! Table may be empty!!</h3>
+  <button (click)="setNegative()">Close the Message</button>
+</div>
+
+<div *ngIf="message === 'Backend may be down!'">
+  <h3 ngClass="red-text">{{message}}</h3>
+  <button (click)="clearMessage()">Close the Message</button>
+</div>

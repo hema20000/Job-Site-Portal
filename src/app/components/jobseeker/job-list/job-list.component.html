@@ -1,0 +1,46 @@
+<br>
+<div class="s01">
+  <form>
+    <div class="inner-form">
+      <div class="input-field first-wrap">
+        <input id="search" type="text" placeholder="Job Location" name="joblocation" [(ngModel)]="joblocation" />
+      </div>
+      <div class="input-field second-wrap">
+        <input id="location" type="text" placeholder="Company Name" name="companyname" [(ngModel)]="companyname" />
+      </div>
+      <div class="input-field third-wrap">
+        <input id="location" type="text" placeholder="Job Name" name="jobname" [(ngModel)]="jobname" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+<h1 class="text-center">Job List</h1><br>
+<div *ngFor="let JOB of joblists | filter: joblocation | cfilter:companyname | jfilter:jobname">
+  <div class="div1"><br>
+    <h5><i class="fas fa-building"></i> {{JOB.companyname}}</h5>
+    <p><b> {{JOB.jobname}} </b></p>
+    <p><i class="fas fa-briefcase"></i> Experience: {{JOB.minimumexperience}}-{{JOB.maximumexperience}} years
+      &nbsp;&nbsp; <i class="fas fa-rupee-sign"></i> Salary: {{JOB.minimumsalary}}-{{JOB.maximumsalary}} &nbsp;&nbsp; <i
+        class='fas fa-map-marker-alt'></i> Location: {{JOB.joblocation}}</p>
+    <p><i class="fas fa-comment"></i> Description: {{JOB.jobdescription}}</p>
+    <p><i class="fa fa-certificate"></i> Skills: {{JOB.mainskill}}, {{JOB.subskills}}</p>
+    <p> <i class="fa fa-bell" aria-hidden="true"></i> Notice Period: {{JOB.noticeperiod}}</p>
+    <p><i class="fa fa-plus-square" aria-hidden="true"></i> Number Of Post: {{JOB.numberofpost}}</p>
+    <button (click)="applyForjob(JOB)">Apply</button><br>
+  </div>
+</div>
+
+<div *ngIf="total_no_of_records == 0">
+  <h3 ngClass="red-text">No Data Found! Table may be empty!!</h3>
+  <button (click)="setNegative()">Close the Message</button>
+</div>
+
+<div *ngIf="message === 'Backend may be down!'">
+  <h3 ngClass="red-text">{{message}}</h3>
+  <button (click)="clearMessage()">Close the Message</button>
+</div>
+
+<button style="background-color: coral; width: auto;" class="btn btn-primary btn1" routerLink="/jobseekerdas">Back to
+  dashoard</button>

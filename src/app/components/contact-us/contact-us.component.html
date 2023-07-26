@@ -1,0 +1,140 @@
+
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<!-- <body> -->
+    
+    <div class="container my-4">
+        <h2>Contact Us</h2>
+        <form (ngSubmit)="contactUs()" #form1="ngForm">
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">User name <span class="red-text">*</span></label>
+                <input type="string"  [(ngModel)]="username" name="username"  #name2="ngModel" minlength="3" required
+                placeholder="Enter Name" pattern="[a-zA-Z][a-zA-Z .]+$" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name" pattern="[a-zA-Z][a-zA-Z .]+$">
+            </div>
+
+            <div class="col-12">
+                <span *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="red-text">
+                  <span *ngIf="name2.errors?.required"> User Name should not be empty.</span>
+                  <span *ngIf="name2.errors?.minlength">User Name must be at least 3 characters long.</span>
+                  <span *ngIf="name2.errors?.pattern">User Name should contain only characters</span>
+                </span>
+              </div>
+
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address<span class="red-text">*</span></label>
+                <input type="email"  [(ngModel)]="emailid" name="emailid" #email_id2="ngModel" class="form-control" required id="exampleFormControlInput1" placeholder="Enter your valid email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+            </div>
+
+            <div class="col-12">
+                <span *ngIf="email_id2.invalid && (email_id2.dirty || email_id2.touched)" class="red-text">
+                  <span *ngIf="email_id2.errors?.required"> Email Id should not be empty.</span>
+                  <span *ngIf="email_id2.errors?.pattern"> This is not a valid Email Id!</span>
+                </span>
+              </div>
+
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Address <span class="red-text">*</span></label>
+                <textarea [(ngModel)]="address" name="address" #place2="ngModel" required minlength="3"
+            placeholder="Enter Address" class="form-control"></textarea>
+            </div>
+
+            <div class="col-12">
+                <span *ngIf="place2.invalid && (place2.dirty || place2.touched)" class="red-text">
+                  <span *ngIf="place2.errors?.required"> Address should not be empty.</span>
+                  <span *ngIf="place2.errors?.minlength"> Address must be at least 3 characters long.</span>
+                  <span *ngIf="place2.errors?.pattern"> This is not a valid Place Name!</span>
+                </span>
+              </div>
+
+
+
+           
+
+              <div class="row">
+                <div class="col-2"><label>Phone No: <span class="red-text">*</span></label></div>
+                <div class="form-group">
+                  <input type="text" [(ngModel)]="phoneno" name="phoneno" #phone_no1="ngModel"  
+                  maxlength=10 required placeholder="Enter Phone No" pattern="^(\+\d{1,9}\s?)?1?\-?\s?\(?\d{1,9}\)?[\s.-]?\d{1,9}[\s.-]?\d{1,9}$" class="form-control">
+                </div>  
+                <div class="col-6">
+                  <span *ngIf="phone_no1.invalid && (phone_no1.dirty || phone_no1.touched)" class="red-text">
+                    <span *ngIf="phone_no1.errors?.required"> Phone No should not be empty.</span>
+                    <span *ngIf="phone_no1.errors?.maxlength"> Phone No must be 10 digits</span>
+                    <span *ngIf="phone_no1.errors?.pattern"> Enter 10 digit mobile number or your landline number</span>
+                  </span>
+                </div>
+              </div>
+              
+
+
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Subject<span class="red-text">*</span></label>
+                <input type="text" [(ngModel)]="subject" name="subject" #subject2="ngModel"  required class="form-control" id="exampleFormControlInput1" placeholder="Breif out reason here">
+            </div>
+
+            <div class="col-12">
+                <span *ngIf="subject2.invalid && (subject2.dirty || subject2.touched)" class="red-text">
+                  <span *ngIf="subject2.errors?.required"> Subject should not be empty.</span>
+                  
+                 
+                </span>
+              </div>
+
+
+
+              <div class="row">
+                <div><label>Preferreddatetime: <span class="red-text">*</span></label></div>
+                <div class="form-group">
+                  <input type="datetime-local" min="min" #input (change)= "onChange(input.value)" [(ngModel)]="preferreddatetime" name="preferreddatetime" #preferreddatetime2="ngModel" required placeholder="Enter preferreddatetime" class="form-control" >
+                </div>
+                <div class="col-12">
+                  <span *ngIf="preferreddatetime2.invalid && (preferreddatetime2.dirty || preferreddatetime2.touched)" class="red-text">
+                    <span *ngIf="preferreddatetime2.errors?.required"> preferreddatetime should not be empty.</span>
+                  </span>
+                </div>
+              </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea2">Message<span class="red-text">*</span></label>
+                <textarea class="form-control"  [(ngModel)]="message" required name="message" #message2="ngModel" id="exampleFormControlTextarea2" rows="3" placeholder="Enter Message Here"></textarea>
+            </div>
+            <div class="col-6">
+                <span *ngIf="message2.invalid && (message2.dirty || message2.touched)" class="red-text">
+                  <span *ngIf="preferreddatetime2.errors?.required"> Message should not be empty.</span>
+                  
+                </span>
+              </div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+    <footer class="container">
+       
+        
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<!-- </body> -->
+

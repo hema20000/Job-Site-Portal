@@ -1,0 +1,51 @@
+<h1 class="text-center" style="color: #007BFF;">JobSeeker List</h1>
+<div *ngIf="total_no_of_records > 0">
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead align="center">
+        <tr>
+          <th>_id</th>
+          <th>User Name</th>
+          <th>Email Id</th>
+          <th>Address</th>
+          <th>Primary Phone No</th>
+          <th>Secondary Phone No</th>
+          <th>Password</th>
+          <th>Black List</th>
+          <th>Comment</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user._id}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.emailid}}</td>
+          <td>{{user.address}}</td>
+          <td>{{user.phoneno1}}</td>
+          <td>{{user.phoneno2}}</td>
+          <td>{{user.password}}</td>
+          <td>{{user.blacklist}}</td>
+          <td>{{user.comments}}</td>
+          <td [routerLink]="['/jobseekerUpdate', user]" align="center"><a title="Update"><i
+                class="fa fa-pencil-square-o" style="font-size: 20px;color:#007BFF;"></i></a></td>
+          <td (click)="deleteJobseeker(user)" align="center"><a title="Delete"><i class="fa fa-trash"
+                style="font-size: 20px;color:red;"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="total_no_of_records == 0">
+  <h3 ngClass="red-text">No Data Found! Table may be empty!!</h3>
+  <button (click)="setNegative()">Close the Message</button>
+</div>
+
+<div *ngIf="message === 'Backend may be down!'">
+  <h3 ngClass="red-text">{{message}}</h3>
+  <button (click)="clearMessage()">Close the Message</button>
+</div>
+<button style="background-color: coral; width: auto;" class="btn btn-primary" routerLink="/admin-DashBoard">
+  Back to dashoard</button>
